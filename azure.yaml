@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: ai-document-processor
+
+infra:
+  bicep:
+    file: ./infra/main.bicep
+    
+services:
+  processing:
+    project: ./pipeline
+    language: python
+    host: function
+
+hooks:
+  postprovision:
+    posix:
+      run: scripts/postprovision.sh
+    windows:
+      run: powershell -ExecutionPolicy Bypass -File scripts/postprovision.ps1
+  postdeploy:
+    posix:
+      run: scripts/postdeploy.sh
+    windows:
+      run: powershell -ExecutionPolicy Bypass -File scripts/postdeploy.ps1

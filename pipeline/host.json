@@ -1,0 +1,29 @@
+{
+  "version": "2.0",
+  "logging": {
+    "logLevel": {
+      "default": "Warning",
+      "Host.Aggregator": "Error",
+      "Host.Results": "Error",
+      "Function": "Information",
+      "DurableTask": "Warning",
+      "Worker": "Warning"
+    },
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
+    }
+  },
+  "durableTask": {
+    "tracing": {
+      "traceInputsAndOutputs": false,
+      "traceReplayEvents": false
+    }
+  },
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[4.*, 5.0.0)"
+  }
+}
